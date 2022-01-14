@@ -1,0 +1,27 @@
+{
+  "name": "js22-graduate-work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch --mode=development",
+    "start": "webpack  serve --open --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peslx/JS22-graduate-work.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peslx/JS22-graduate-work/issues"
+  },
+  "homepage": "https://github.com/peslx/JS22-graduate-work#readme",
+  "devDependencies": {
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  }
+}
