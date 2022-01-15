@@ -1,3 +1,3 @@
-import { settings } from "./modules/settings";
+import { m02_slider } from "./modules/m02_slider";
 
-settings();
+m02_slider();
