@@ -2,8 +2,6 @@ export const m02_slider = () => {
   // console.log("m02_slider");
   const servicesSlider = () => {
     const slider = document.getElementById("services").querySelector(".row");
-    const left = slider.querySelector(".services__arrow--left");
-    const right = slider.querySelector(".services__arrow--right");
     let slidesToShow;
     const wrapSlides = () => {
       const storage = [];
@@ -77,4 +75,68 @@ export const m02_slider = () => {
   };
 
   servicesSlider();
+
+  const benefitsSlider = () => {
+    const slider = document
+      .getElementById("benefits")
+      .querySelector(".container");
+    const container = slider.querySelector(".benefits-wrap");
+    let slidesToShow;
+
+    const setSlidesCount = () => {
+      if (document.documentElement.clientWidth <= 576) {
+        container.style.justifyContent = "space-around";
+        slidesToShow = 1;
+      } else {
+        slidesToShow = 3;
+      }
+    };
+
+    const showSlides = () => {
+      const slides = slider.querySelectorAll(".benefits__item");
+      slides.forEach((s) => {
+        s.style.display = "none";
+      });
+      for (let i = 0; i < slidesToShow; i++) {
+        slides[i].style = "";
+      }
+    };
+
+    const next = () => {
+      const container = slider.querySelector(".benefits-wrap");
+      const temp = container.removeChild(container.firstChild);
+      container.append(temp);
+      showSlides();
+    };
+
+    const prev = () => {
+      const container = slider.querySelector(".benefits-wrap");
+      const temp = container.removeChild(container.lastChild);
+      container.prepend(temp);
+      showSlides();
+    };
+
+    setSlidesCount();
+    showSlides();
+
+    window.addEventListener("resize", () => {
+      setSlidesCount();
+      showSlides();
+    });
+
+    slider.addEventListener("click", (e) => {
+      if (!e.target.closest(".benefits__arrow")) {
+        return;
+      }
+      if (e.target.closest(".benefits__arrow--right")) {
+        next();
+        next();
+      } else if (e.target.closest(".benefits__arrow--left")) {
+        prev();
+        prev();
+      }
+    });
+  };
+
+  benefitsSlider();
 };
