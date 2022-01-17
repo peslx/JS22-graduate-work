@@ -1,3 +1,3 @@
-import { settings } from "./modules/settings";
+import { m04_smoothScroll } from "./modules/m04_smoothScroll";
 
-settings();
+m04_smoothScroll();
