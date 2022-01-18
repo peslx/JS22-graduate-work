@@ -20,6 +20,7 @@ export const m02_slider = () => {
       const benefitsSlider = new Swiper("#benefits-slider", {
         direction: "horizontal",
         loop: true,
+        centeredSlides: true,
         breakpoints: {
           // when window width is >= 320px
           320: {
@@ -46,11 +47,14 @@ export const m02_slider = () => {
     init() {
       const servicesSlider = new Swiper("#services-slider", {
         direction: "horizontal",
-
+        slidesPerView: 2,
         spaceBetween: 30,
+
         breakpoints: {
           // when window width is >= 320px
           320: {
+            slidesPerView: 1,
+            spaceBetween: 30,
             grid: {
               rows: 1,
               fill: "row",
@@ -58,12 +62,22 @@ export const m02_slider = () => {
           },
           576: {
             slidesPerView: 1,
+            spaceBetween: 30,
             grid: {
               rows: 2,
               fill: "row",
             },
           },
+          1200: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            grid: {
+              rows: 1,
+              fill: "row",
+            },
+          },
         },
+
         // Navigation arrows
         navigation: {
           nextEl: ".services__arrow--right",
