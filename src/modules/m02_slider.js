@@ -1,5 +1,4 @@
 export const m02_slider = () => {
-  // console.log("m02_slider");
   const benefitsSliderBlock = document.getElementById("benefits-slider");
 
   const fixSliderWidth = () => {
@@ -16,16 +15,9 @@ export const m02_slider = () => {
     fixSliderWidth();
   });
 
-  const benefitsWrap = document.querySelector(".benefits-wrap");
-  benefitsWrap.style.justifyContent = "flex-start";
-  benefitsWrap.style.justifyContent = "space-between";
-
   const benefitsSlider = new Swiper("#benefits-slider", {
-    // Optional parameters
     direction: "horizontal",
     loop: true,
-
-    // Responsive breakpoints
     breakpoints: {
       // when window width is >= 320px
       320: {
@@ -37,7 +29,6 @@ export const m02_slider = () => {
         spaceBetween: 10,
       },
     },
-
     // Navigation arrows
     navigation: {
       nextEl: ".benefits__arrow--right",
