@@ -1,142 +1,47 @@
 export const m02_slider = () => {
   // console.log("m02_slider");
-  const servicesSlider = () => {
-    const slider = document.getElementById("services").querySelector(".row");
-    let slidesToShow;
-    const wrapSlides = () => {
-      const storage = [];
-      const container = document.createElement("div");
-      container.classList.add("slider-container");
-      slider.prepend(container);
+  const benefitsSliderBlock = document.getElementById("benefits-slider");
 
-      slider.querySelectorAll(".col-md-12.col-lg-6").forEach((element) => {
-        const clone = element.cloneNode(true);
-        storage.push(clone);
-        slider.removeChild(element);
-      });
-
-      storage.forEach((s) => {
-        container.append(s);
-      });
-    };
-
-    const setSlidesCount = () => {
-      if (document.documentElement.clientWidth <= 576) {
-        slidesToShow = 1;
-      } else {
-        slidesToShow = 2;
-      }
-    };
-
-    const showSlides = () => {
-      const slides = slider.querySelectorAll(".col-md-12.col-lg-6");
-      slides.forEach((s) => {
-        s.style.display = "none";
-      });
-      for (let i = 0; i < slidesToShow; i++) {
-        slides[i].style.display = "";
-      }
-    };
-
-    const next = () => {
-      const container = slider.querySelector(".slider-container");
-      for (let i = 0; i < slidesToShow; i++) {
-        const temp = container.removeChild(container.firstChild);
-        container.append(temp);
-      }
-      showSlides();
-    };
-
-    const prev = () => {
-      const container = slider.querySelector(".slider-container");
-      for (let i = 0; i < slidesToShow; i++) {
-        const temp = container.removeChild(container.lastChild);
-        container.prepend(temp);
-      }
-      showSlides();
-    };
-
-    setSlidesCount();
-    wrapSlides();
-    showSlides();
-
-    window.addEventListener("resize", () => {
-      setSlidesCount();
-      showSlides();
-    });
-
-    slider.addEventListener("click", (e) => {
-      if (e.target.closest(".services__arrow--right")) {
-        next();
-      } else if (e.target.closest(".services__arrow--left")) {
-        prev();
-      }
-    });
+  const fixSliderWidth = () => {
+    if (window.outerWidth >= 576) {
+      benefitsSliderBlock.style.width = "560px";
+    } else if (window.outerWidth < 576) {
+      benefitsSliderBlock.style.width = "180px";
+    }
   };
 
-  servicesSlider();
+  fixSliderWidth();
+  window.addEventListener("resize", (e) => {
+    console.log(window.outerWidth);
+    fixSliderWidth();
+  });
 
-  const benefitsSlider = () => {
-    const slider = document
-      .getElementById("benefits")
-      .querySelector(".container");
-    const container = slider.querySelector(".benefits-wrap");
-    let slidesToShow;
+  const benefitsWrap = document.querySelector(".benefits-wrap");
+  benefitsWrap.style.justifyContent = "flex-start";
+  benefitsWrap.style.justifyContent = "space-between";
 
-    const setSlidesCount = () => {
-      if (document.documentElement.clientWidth <= 576) {
-        container.style.justifyContent = "space-around";
-        slidesToShow = 1;
-      } else {
-        slidesToShow = 3;
-      }
-    };
+  const benefitsSlider = new Swiper("#benefits-slider", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
 
-    const showSlides = () => {
-      const slides = slider.querySelectorAll(".benefits__item");
-      slides.forEach((s) => {
-        s.style.display = "none";
-      });
-      for (let i = 0; i < slidesToShow; i++) {
-        slides[i].style = "";
-      }
-    };
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+      },
+      566: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+      },
+    },
 
-    const next = () => {
-      const container = slider.querySelector(".benefits-wrap");
-      const temp = container.removeChild(container.firstChild);
-      container.append(temp);
-      showSlides();
-    };
-
-    const prev = () => {
-      const container = slider.querySelector(".benefits-wrap");
-      const temp = container.removeChild(container.lastChild);
-      container.prepend(temp);
-      showSlides();
-    };
-
-    setSlidesCount();
-    showSlides();
-
-    window.addEventListener("resize", () => {
-      setSlidesCount();
-      showSlides();
-    });
-
-    slider.addEventListener("click", (e) => {
-      if (!e.target.closest(".benefits__arrow")) {
-        return;
-      }
-      if (e.target.closest(".benefits__arrow--right")) {
-        next();
-        next();
-      } else if (e.target.closest(".benefits__arrow--left")) {
-        prev();
-        prev();
-      }
-    });
-  };
-
-  benefitsSlider();
+    // Navigation arrows
+    navigation: {
+      nextEl: ".benefits__arrow--right",
+      prevEl: ".benefits__arrow--left",
+    },
+  });
 };
