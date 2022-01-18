@@ -1,3 +1,3 @@
-import { settings } from "./modules/settings";
+import { m05_validron } from "./modules/m05_validron";
 
-settings();
+m05_validron();
