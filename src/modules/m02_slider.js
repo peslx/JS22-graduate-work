@@ -1,38 +1,77 @@
 export const m02_slider = () => {
-  const benefitsSliderBlock = document.getElementById("benefits-slider");
+  const benefitsSlider = {
+    benefitsSliderBlock: document.getElementById("benefits-slider"),
 
-  const fixSliderWidth = () => {
-    if (window.outerWidth >= 576) {
-      benefitsSliderBlock.style.width = "560px";
-    } else if (window.outerWidth < 576) {
-      benefitsSliderBlock.style.width = "180px";
-    }
+    fixSliderWidth() {
+      if (window.outerWidth >= 576) {
+        this.benefitsSliderBlock.style.width = "560px";
+      } else if (window.outerWidth < 576) {
+        this.benefitsSliderBlock.style.width = "180px";
+      }
+    },
+
+    init() {
+      this.fixSliderWidth();
+      window.addEventListener("resize", (e) => {
+        // console.log(window.outerWidth);
+        this.fixSliderWidth();
+      });
+
+      const benefitsSlider = new Swiper("#benefits-slider", {
+        direction: "horizontal",
+        loop: true,
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          566: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: ".benefits__arrow--right",
+          prevEl: ".benefits__arrow--left",
+        },
+      });
+    },
   };
 
-  fixSliderWidth();
-  window.addEventListener("resize", (e) => {
-    console.log(window.outerWidth);
-    fixSliderWidth();
-  });
+  benefitsSlider.init();
 
-  const benefitsSlider = new Swiper("#benefits-slider", {
-    direction: "horizontal",
-    loop: true,
-    breakpoints: {
-      // when window width is >= 320px
-      320: {
-        slidesPerView: 1,
+  const servicesSlider = {
+    init() {
+      const servicesSlider = new Swiper("#services-slider", {
+        direction: "horizontal",
+
         spaceBetween: 30,
-      },
-      566: {
-        slidesPerView: 3,
-        spaceBetween: 10,
-      },
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            grid: {
+              rows: 1,
+              fill: "row",
+            },
+          },
+          576: {
+            slidesPerView: 1,
+            grid: {
+              rows: 2,
+              fill: "row",
+            },
+          },
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: ".services__arrow--right",
+          prevEl: ".services__arrow--left",
+        },
+      });
     },
-    // Navigation arrows
-    navigation: {
-      nextEl: ".benefits__arrow--right",
-      prevEl: ".benefits__arrow--left",
-    },
-  });
+  };
+
+  servicesSlider.init();
 };
