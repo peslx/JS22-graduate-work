@@ -1,3 +1,3 @@
-import { m05_validron } from "./modules/m05_validron";
+import { m05_validrone } from "./modules/m05_validrone";
 
-m05_validron();
+m05_validrone();
