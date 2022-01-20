@@ -6,7 +6,6 @@ import { m05_validrone } from "./modules/m05_validrone";
 
 m01_callPopup();
 m02_slider();
-// m03_timer("January 21, 2022 21:00");
-m03_timer();
+m03_timer("January 22, 2022 00:00");
 m04_smoothScroll();
 m05_validrone();

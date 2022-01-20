@@ -1,6 +1,7 @@
 export const m04_smoothScroll = () => {
   const scrollBtn = document.querySelector(".smooth-scroll");
   const offer = document.getElementById("offer");
+  scrollBtn.style.cursor = "pointer";
 
   const hideScrollBtn = () => {
     scrollBtn.style.display = "none";
@@ -23,7 +24,6 @@ export const m04_smoothScroll = () => {
   });
 
   scrollBtn.addEventListener("click", (e) => {
-    console.dir(benefits);
     e.preventDefault();
     window.scrollBy({
       top: -window.scrollY,
