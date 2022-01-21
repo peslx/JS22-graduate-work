@@ -684,11 +684,11 @@
 			</p>
 			<form name="callback-form">
 				<div class="form-group">
-					<input type="text" name="fio" class="form-control required" placeholder="Ваше имя*">
+					<input type="text" name="fio" class="form-control required" placeholder="Ваше имя*" minlength="2" required>
 				</div>
 				<div class="form-group">
 					<input type="text" name="phone" class="form-control required" placeholder="Контактный телефон*"
-						data-mask="+7 (999) 999-99-99">
+						data-mask="+7 (999) 999-99-99" maxlength="18" minlength="12" required>
 				</div>
 				<div class="form-action">
 					<div class="text-center"><button type="submit" class="btn btn-warning feedback">Свяжитесь со мной!</button>
@@ -783,7 +783,7 @@
 								</div>
 								<div class="form-group">
 									<input type="text" name="phone" class="form-control required" placeholder="Контактный телефон*"
-										data-mask="+7 (999) 999-99-99">
+										data-mask="+7 (999) 999-99-99" >
 								</div>
 								<div class="form-action">
 									<div class="text-center"><button type="submit" class="btn btn-warning feedback">Свяжитесь со
