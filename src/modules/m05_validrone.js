@@ -164,10 +164,11 @@ export class Validrone {
 
     document.addEventListener("submit", (e) => {
       this.forms.forEach((f) => {
-        if (e.target === f) {
+        if (e.target == f) {
           e.preventDefault();
 
           let isValid = true;
+
           f.querySelectorAll("input").forEach((i) => {
             this.checkValidity(i, log);
 

@@ -18,6 +18,9 @@ export const m01_callPopup = () => {
     ".services-modal__close"
   );
 
+  const order = document.getElementById("order");
+  const orderBtn = document.querySelector("a[href='#order']");
+
   const responseMessage = document.getElementById("responseMessage");
   const okBtn = responseMessage.querySelector("a[href='#']");
 
@@ -29,6 +32,10 @@ export const m01_callPopup = () => {
   const hide = (elem) => {
     elem.style.display = "none";
     overlay.style.display = "none";
+  };
+
+  const addCalcInput = (form) => {
+    // <input type="hidden" name="calcTotal" value=""></input>
   };
 
   const responseHandler = (response) => {
@@ -58,6 +65,23 @@ export const m01_callPopup = () => {
       hide(responseMessage);
     }
 
+    if (e.target === orderBtn) {
+      e.preventDefault();
+      order.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      `;
+      reveal(order);
+      order.addEventListener("submit", () => {
+        hide(order);
+      });
+    } else if (e.target === overlay) {
+      hide(order);
+    }
+
     callPopupBtns.forEach((a) => {
       if (e.target === a || e.target.closest("a[href='#callback']")) {
         e.preventDefault();
@@ -75,6 +99,8 @@ export const m01_callPopup = () => {
           });
           if (valid) {
             hide(headerModal);
+          } else {
+            return;
           }
         });
       } else if (e.target === headerCloseBtn || e.target === overlay) {
@@ -90,8 +116,24 @@ export const m01_callPopup = () => {
         page.value = pageName;
         subj.value = a.dataset.subject;
         reveal(servicesModal);
-        servicesModal.addEventListener("submit", () => {
-          hide(servicesModal);
+        servicesModal.querySelector("form").addEventListener("submit", (e) => {
+          e.preventDefault();
+          let valid = true;
+
+          servicesModal.querySelectorAll("input").forEach((i) => {
+            if (i.value == "") {
+              i.classList.add("validError");
+              valid = false;
+            } else if (i.classList.contains("validError")) {
+              valid = false;
+            }
+          });
+
+          if (valid) {
+            hide(servicesModal);
+          } else {
+            return;
+          }
         });
       } else if (e.target === servicesCloseBtn || e.target === overlay) {
         hide(servicesModal);
