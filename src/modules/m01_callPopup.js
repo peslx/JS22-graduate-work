@@ -1,6 +1,5 @@
 import { Validrone } from "./m05_validrone";
 export const m01_callPopup = () => {
-  // console.log("m01_callPopup");
   const headerMenu = document.getElementById("menu");
   const pageName = headerMenu.querySelector('li[class="active"]').dataset.page;
 
@@ -21,10 +20,14 @@ export const m01_callPopup = () => {
   const order = document.getElementById("order");
   const orderBtn = document.querySelector("a[href='#order']");
 
+  const actionForm = document.querySelector("form[name='action-form']");
+  const actionForm2 = document.querySelector("form[name='action-form2']");
+
   const responseMessage = document.getElementById("responseMessage");
   const okBtn = responseMessage.querySelector("a[href='#']");
 
-  const calcTotal = calc.querySelector("#calc-total");
+  const calc = document.getElementById("calc");
+  const calcTotal = document.querySelector("input[name='calc-total']");
 
   const reveal = (elem) => {
     elem.style.display = "block";
@@ -37,34 +40,38 @@ export const m01_callPopup = () => {
   };
 
   const initCalculator = () => {
-    const calc = document.getElementById("calc");
-    const calcType = calc.querySelector("#calc-type");
-    const calcMat = calc.querySelector("#calc-type-material");
-    const calcInput = calc.querySelector("#calc-input");
+    if (calc) {
+      const calcType = calc.querySelector("#calc-type");
+      const calcMat = calc.querySelector("#calc-type-material");
+      const calcInput = calc.querySelector("#calc-input");
 
-    calc.addEventListener("input", (e) => {
-      if (e.target === calcInput) {
-        if (calcInput.value < 0) {
-          calcInput.value = 0;
+      calc.addEventListener("input", (e) => {
+        if (e.target === calcInput) {
+          if (calcInput.value < 0) {
+            calcInput.value = 0;
+          }
         }
-      }
 
-      if (
-        calcType.selectedIndex !== 0 &&
-        calcMat.selectedIndex !== 0 &&
-        calcInput.value !== "" &&
-        calcInput.value > 0
-      ) {
-        let res =
-          calcType[calcType.selectedIndex].value *
-          calcMat[calcMat.selectedIndex].value *
-          calcInput.value;
-        res = Math.ceil(res * 10) / 10;
-        calcTotal.value = res;
-      } else {
-        calcTotal.value = "";
-      }
-    });
+        if (
+          calcType.selectedIndex !== 0 &&
+          calcMat.selectedIndex !== 0 &&
+          calcInput.value !== "" &&
+          calcInput.value > 0
+        ) {
+          let res =
+            calcType[calcType.selectedIndex].value *
+            calcMat[calcMat.selectedIndex].value *
+            calcInput.value;
+          res = Math.ceil(res * 10) / 10;
+          calcTotal.value = res;
+
+          addCalcInput(actionForm);
+          addCalcInput(actionForm2);
+        } else {
+          calcTotal.value = "";
+        }
+      });
+    }
   };
 
   const addCalcInput = (form) => {
@@ -96,7 +103,6 @@ export const m01_callPopup = () => {
 
   const responseHandler = (response) => {
     if (response) {
-      // alert("Ваша заявка принята!");
       callResponseMsg("Ваша заявка принята!");
     } else {
       callResponseMsg("При отправке формы произошла ошибка!");
