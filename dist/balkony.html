@@ -709,6 +709,157 @@
 				<h2 class="heading"><span>Отзывы</span> клиентов</h2>
 			</div>
 			<div class="row">
+
+          <div class="reviews-preloader" id="reviews-preloader">
+            <div class="reviews-preloader__wrap">
+              <div class="reviews-preloader__spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <style type="text/css">
+              @keyframes spinner {
+                0% {
+                  opacity: 1;
+                }
+
+                100% {
+                  opacity: 0;
+                }
+              }
+
+              .reviews-preloader__spinner div {
+                left: 48.5px;
+                top: 26px;
+                position: absolute;
+                animation: spinner linear 0.4255319148936171s infinite;
+                background: #41a500;
+                width: 3px;
+                height: 12px;
+                border-radius: 1.5px / 4.08px;
+                transform-origin: 1.5px 24px;
+              }
+
+              .reviews-preloader__spinner div:nth-child(1) {
+                transform: rotate(0deg);
+                animation-delay: -0.3927986906710311s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(2) {
+                transform: rotate(27.692307692307693deg);
+                animation-delay: -0.3600654664484452s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(3) {
+                transform: rotate(55.38461538461539deg);
+                animation-delay: -0.32733224222585927s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(4) {
+                transform: rotate(83.07692307692308deg);
+                animation-delay: -0.29459901800327337s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(5) {
+                transform: rotate(110.76923076923077deg);
+                animation-delay: -0.2618657937806874s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(6) {
+                transform: rotate(138.46153846153845deg);
+                animation-delay: -0.2291325695581015s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(7) {
+                transform: rotate(166.15384615384616deg);
+                animation-delay: -0.19639934533551556s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(8) {
+                transform: rotate(193.84615384615384deg);
+                animation-delay: -0.16366612111292964s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(9) {
+                transform: rotate(221.53846153846155deg);
+                animation-delay: -0.1309328968903437s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(10) {
+                transform: rotate(249.23076923076923deg);
+                animation-delay: -0.09819967266775778s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(11) {
+                transform: rotate(276.9230769230769deg);
+                animation-delay: -0.06546644844517185s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(12) {
+                transform: rotate(304.61538461538464deg);
+                animation-delay: -0.03273322422258593s;
+                background: #41a500;
+              }
+
+              .reviews-preloader__spinner div:nth-child(13) {
+                transform: rotate(332.3076923076923deg);
+                animation-delay: 0s;
+                background: #41a500;
+              }
+
+              .reviews-preloader {
+                display: none;
+                justify-content: center;
+                align-items: center;
+              }
+
+              .reviews-preloader__wrap {
+                width: 85px;
+                height: 85px;
+                display: inline-block;
+                overflow: hidden;
+                background: none;
+              }
+
+              .reviews-preloader__spinner {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                transform: translateZ(0) scale(0.85);
+                backface-visibility: hidden;
+                transform-origin: 0 0;
+              }
+
+              .reviews-preloader__spinner div {
+                box-sizing: content-box;
+              }
+            </style>
+          </div>
+          <!-- preloader -->
+
+
 				<div class="col-sm-offset-1 col-xs-12 comments-container">
 					<div class="review-margin-bottom row comments-item">
 						<div class="col-xs-3 col-sm-2">
