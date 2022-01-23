@@ -1,6 +1,4 @@
 export const m06_imageViewer = () => {
-  console.log("m06_imageViewer");
-
   const documents = document.getElementById("documents");
   const serts = documents.querySelectorAll(".sertificate-document");
   const overlay = document.querySelector(".overlay");
