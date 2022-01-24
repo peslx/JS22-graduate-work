@@ -79,7 +79,7 @@ export const m07_reviews = () => {
           commentsContainer.insertAdjacentHTML(
             "beforeend",
             `
-            <div class="row comment-item">
+            <div class="review-margin-bottom row comment-item">
               <div class="col-xs-3 col-sm-2">
                 <div class="review-user">
                   <img src="./images/users/${
